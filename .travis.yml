@@ -30,7 +30,9 @@ jobs:
     - stage: integration test
       script: mvn failsafe:integration-test failsafe:verify -B
     - stage: quality analysis
-      script: mvn org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar
+      script: 
+        - jdk_switcher use openjdk8
+        - mvn org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar
     - stage: system test
       script: ./run-st.sh
 
