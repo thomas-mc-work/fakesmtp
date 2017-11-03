@@ -2,6 +2,8 @@ package org.tmcw.fakesmtp.cli;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.LoggerFactory;
@@ -22,8 +24,17 @@ public final class Main {
      * @param args a list of command line parameters.
      */
     public static void main(final String... args) {
+        final CliParams cliParams = new CliParams();
+        final CommandLine commandLine = new CommandLine(cliParams);
+        commandLine.registerConverter(java.nio.file.Path.class, new CommandLine.ITypeConverter<Path>() {
+            @Override
+            public Path convert(String value) throws Exception {
+                return Paths.get(value);
+            }
+        });
+
         try {
-            final CliParams cliParams = CommandLine.populateCommand(new CliParams(), args);
+            commandLine.parse(args);
 
             if (cliParams.verbose) {
                 ((Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME))
