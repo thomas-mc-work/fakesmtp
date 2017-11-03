@@ -12,6 +12,7 @@ import javax.mail.internet.MimeMessage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import org.tmcw.fakesmtp.FolderHelper;
 
 public class SaveToFilesystemTest {
 
@@ -29,9 +30,9 @@ public class SaveToFilesystemTest {
         final SaveToFilesystem instance = new SaveToFilesystem(outputPath);
         instance.handle(from, recipient, rawMessage, mimeMessage);
 
-        assertEquals(Files.list(outputPath).count(), 1);
+        assertEquals(FolderHelper.listFiles(outputPath).size(), 1);
 
-        final Path firstFile = Files.list(outputPath).findFirst().get();
+        final Path firstFile = FolderHelper.listFiles(outputPath).get(0);
         final String fileName = firstFile.getFileName().toString();
 
         final String expectedPrefix = new SimpleDateFormat("yyyy-MM-dd'T'HH")

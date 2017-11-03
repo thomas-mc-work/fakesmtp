@@ -1,6 +1,5 @@
 package org.tmcw.fakesmtp;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -35,7 +34,7 @@ public final class SendEmailsST {
         final Email email = simpleEmail();
         email.send();
 
-        assertEquals(OUTPUT_PATH.toFile().listFiles().length, 1);
+        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
 
         final MimeMessage message = readAndRemoveMessageFile();
         assertEquals(message.getSubject(), email.getSubject());
@@ -65,7 +64,7 @@ public final class SendEmailsST {
         // Send the email
         email.send();
 
-        assertEquals(OUTPUT_PATH.toFile().listFiles().length, 1);
+        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
 
         final MimeMessage message = readAndRemoveMessageFile();
         assertEquals(message.getSubject(), email.getSubject());
@@ -95,7 +94,7 @@ public final class SendEmailsST {
 
         email.send();
 
-        assertEquals(OUTPUT_PATH.toFile().listFiles().length, 1);
+        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
 
         final MimeMessage message = readAndRemoveMessageFile();
         assertEquals(message.getSubject(), email.getSubject());
@@ -112,7 +111,7 @@ public final class SendEmailsST {
         email.setSubject("=?UTF-8?B?8J+ahSBCb3N0b24gcmFpbHdheSBkZWFscyAtIHdoaWxlIHRoZXkgbGFzdCE==?=");
         email.send();
 
-        assertEquals(OUTPUT_PATH.toFile().listFiles().length, 1);
+        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
 
         final MimeMessage message = readAndRemoveMessageFile();
         assertEquals(message.getSubject(), "🚅 Boston railway deals - while they last!");
@@ -126,7 +125,7 @@ public final class SendEmailsST {
         email.addHeader("Foo2", "Bar2");
         email.send();
 
-        assertEquals(OUTPUT_PATH.toFile().listFiles().length, 2);
+        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 2);
 
         final MimeMessage message1 = readAndRemoveMessageFile();
         final MimeMessage message2 = readAndRemoveMessageFile();
@@ -145,7 +144,7 @@ public final class SendEmailsST {
         email.setMsg(".\n.");
         email.send();
 
-        assertEquals(OUTPUT_PATH.toFile().listFiles().length, 1);
+        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
 
         final MimeMessage message = readAndRemoveMessageFile();
         assertEquals(message.getSubject(), email.getSubject());
@@ -166,12 +165,12 @@ public final class SendEmailsST {
     }
 
     private MimeMessage readAndRemoveMessageFile() throws IOException, MessagingException {
-        final File firstFile = OUTPUT_PATH.toFile().listFiles()[0];
+        final Path firstFile = FolderHelper.listFiles(OUTPUT_PATH).get(0);
 
-        try (InputStream inputStream = Files.newInputStream(firstFile.toPath())) {
+        try (InputStream inputStream = Files.newInputStream(firstFile)) {
             final MimeMessage mimeMessage = new MimeMessage(
                     Session.getInstance(new Properties()), inputStream);
-            Files.delete(firstFile.toPath());
+            Files.delete(firstFile);
             return mimeMessage;
         }
     }
