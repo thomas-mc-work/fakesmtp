@@ -7,7 +7,7 @@ You can use it as a normal SMTP server in your applications. All emails will be 
 FakeSMTP is free to use for commercial and non-commercial projects and the
 source code is provided.
 
-![src/site/resources/images/screenshot.png](Screenshot)
+![Screenshot](src/site/resources/images/screenshot.png)
 
 ## Setup
 
