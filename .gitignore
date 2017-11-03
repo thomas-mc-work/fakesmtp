@@ -1,0 +1,24 @@
+# Temporary files
+*~
+\#*
+
+# Target folder
+target/*
+
+# Eclipse files
+.classpath
+.pmd
+.project
+.settings/*
+
+# IntelliJ files
+.idea
+*.iml
+
+# Received emails folder
+output
+emails-recus/*
+
+# netbeans
+/nbproject/
+nbactions.xml

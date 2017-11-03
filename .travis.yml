@@ -1,0 +1,29 @@
+language: java
+sudo: false
+dist: trusty
+
+jdk:
+  - openjdk7
+  - openjdk8
+
+addons:
+  apt:
+    packages:
+    - jq
+
+services:
+  - docker
+
+before_script:
+  - mvn package -DskipTests
+
+jobs:
+  include:
+    - stage: unit test
+      script: mvn test -B
+    - stage: mutation test
+      script: mvn -Dthreads=4 -DwithHistory org.pitest:pitest-maven:mutationCoverage -B
+    - stage: integration test
+      script: mvn failsafe:integration-test failsafe:verify -B
+    - stage: system test
+      script: ./run-st.sh
