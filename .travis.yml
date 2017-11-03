@@ -10,6 +10,10 @@ addons:
   apt:
     packages:
     - jq
+  sonarcloud:
+    organization: "thomas-mc-work-github"
+    token:
+      secure: "ea7c310215767106ae37bb9c7dac595d3d7a4704"
 
 services:
   - docker
@@ -19,11 +23,18 @@ before_script:
 
 jobs:
   include:
-    - stage: test
+    - stage: unit test
       script: mvn test -B
     - stage: mutation test
       script: mvn -Dthreads=4 -DwithHistory org.pitest:pitest-maven:mutationCoverage -B
     - stage: integration test
       script: mvn failsafe:integration-test failsafe:verify -B
+    - stage: quality analysis
+      script: mvn org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar
     - stage: system test
       script: ./run-st.sh
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
