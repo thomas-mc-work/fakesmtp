@@ -15,11 +15,11 @@ services:
   - docker
 
 before_script:
-  - mvn package -DskipTests
+  - mvn package -DskipTests=true -B
 
 jobs:
   include:
-    - stage: unit test
+    - stage: test
       script: mvn test -B
     - stage: mutation test
       script: mvn -Dthreads=4 -DwithHistory org.pitest:pitest-maven:mutationCoverage -B
