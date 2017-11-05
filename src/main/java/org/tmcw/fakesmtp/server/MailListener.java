@@ -69,8 +69,6 @@ public final class MailListener implements SimpleMessageListener {
                     new ByteArrayInputStream(rawMessage.getBytes(StandardCharsets.UTF_8)));
 
             processHandlers(from, recipient, rawMessage, mimeMessage);
-        } catch (IOException ex) {
-            LoggerFactory.getLogger(getClass()).error("failed to read email content stream", ex);
         } catch (MessagingException ex) {
             LoggerFactory.getLogger(getClass()).error("failed to decode email content stream", ex);
         }

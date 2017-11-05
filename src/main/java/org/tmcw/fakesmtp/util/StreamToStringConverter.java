@@ -15,9 +15,8 @@ public class StreamToStringConverter {
      *
      * @param is the InputStream to be converted.
      * @return the converted string object, containing data from the InputStream passed in parameters.
-     * @throws java.io.IOException
      */
-    public String convert(final InputStream is) throws IOException {
+    public String convert(final InputStream is) {
         final Scanner s = new Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
