@@ -1,4 +1,4 @@
-# Fake-SMTP
+# 📨 Fake-SMTP [![Build Status](https://travis-ci.org/thomas-mc-work/fakesmtp.svg?branch=master)](https://travis-ci.org/thomas-mc-work/fakesmtp)
 
 FakeSMTP is a Free Fake SMTP Server ~~with GUI~~ for testing emails in applications easily.
 
