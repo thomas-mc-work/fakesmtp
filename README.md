@@ -1,4 +1,4 @@
-# Fake-SMTP
+# 📨 Fake-SMTP
 
 FakeSMTP is a Free Fake SMTP Server ~~with GUI~~ for testing emails in applications easily.
 
