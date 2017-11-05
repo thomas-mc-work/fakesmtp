@@ -19,7 +19,6 @@ import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.MultiPartEmail;
 import org.apache.commons.mail.SimpleEmail;
 import static org.junit.Assert.assertEquals;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public final class SendEmailsST {
@@ -29,15 +28,14 @@ public final class SendEmailsST {
     public static final Path OUTPUT_PATH = Paths.get(System.getProperty("output.path", "output"));
 
     @Test
-    @Ignore
     public void sendSimpleTestEmail() throws Exception {
         final Email email = simpleEmail();
         email.send();
 
-        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
+        assertEquals(1, FolderHelper.listFiles(OUTPUT_PATH).size());
 
         final MimeMessage message = readAndRemoveMessageFile();
-        assertEquals(message.getSubject(), email.getSubject());
+        assertEquals(email.getSubject(), message.getSubject());
     }
 
     @Test
@@ -64,16 +62,16 @@ public final class SendEmailsST {
         // Send the email
         email.send();
 
-        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
+        assertEquals(1, FolderHelper.listFiles(OUTPUT_PATH).size());
 
         final MimeMessage message = readAndRemoveMessageFile();
         assertEquals(message.getSubject(), email.getSubject());
 
         final MimeMultipart mpContent = (MimeMultipart) message.getContent();
-        assertEquals(mpContent.getCount(), 2);
-        assertEquals(mpContent.getBodyPart(1).getFileName(), attachment.getName());
-        assertEquals(mpContent.getBodyPart(1).getDescription(), attachment.getDescription());
-        assertEquals(mpContent.getBodyPart(1).getSize(), 2578);
+        assertEquals(2, mpContent.getCount());
+        assertEquals(attachment.getName(), mpContent.getBodyPart(1).getFileName());
+        assertEquals(attachment.getDescription(), mpContent.getBodyPart(1).getDescription());
+        assertEquals(2578, mpContent.getBodyPart(1).getSize());
     }
 
     @Test
@@ -94,14 +92,15 @@ public final class SendEmailsST {
 
         email.send();
 
-        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
+        assertEquals(1, FolderHelper.listFiles(OUTPUT_PATH).size());
 
         final MimeMessage message = readAndRemoveMessageFile();
-        assertEquals(message.getSubject(), email.getSubject());
+        assertEquals(email.getSubject(), message.getSubject());
 
         final MimeMultipart mpContent = (MimeMultipart) message.getContent();
-        assertEquals(mpContent.getCount(), 1);
-        assertEquals(mpContent.getBodyPart(0).getSize(), 401);
+        assertEquals(2, mpContent.getCount());
+        assertEquals(48, mpContent.getBodyPart(0).getSize());
+        assertEquals(67, mpContent.getBodyPart(1).getSize());
     }
 
     @Test
@@ -111,10 +110,10 @@ public final class SendEmailsST {
         email.setSubject("=?UTF-8?B?8J+ahSBCb3N0b24gcmFpbHdheSBkZWFscyAtIHdoaWxlIHRoZXkgbGFzdCE==?=");
         email.send();
 
-        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
+        assertEquals(1, FolderHelper.listFiles(OUTPUT_PATH).size());
 
         final MimeMessage message = readAndRemoveMessageFile();
-        assertEquals(message.getSubject(), "🚅 Boston railway deals - while they last!");
+        assertEquals("🚅 Boston railway deals - while they last!", message.getSubject());
     }
 
     @Test
@@ -129,12 +128,15 @@ public final class SendEmailsST {
 
         final MimeMessage message1 = readAndRemoveMessageFile();
         final MimeMessage message2 = readAndRemoveMessageFile();
-        assertEquals(message1.getSubject(), email.getSubject());
+        assertEquals(email.getSubject(), message1.getSubject());
 
         final Address[] recipientsMsg1 = message1.getRecipients(Message.RecipientType.TO);
-        assertEquals(recipientsMsg1.length, 2);
-        assertEquals(recipientsMsg1[0].toString(), "foo@bar.com");
-        assertEquals(recipientsMsg1[1].toString(), "test2@example.com");
+        assertEquals(2, recipientsMsg1.length);
+        assertEquals("foo@bar.com", recipientsMsg1[0].toString());
+        assertEquals("test2@example.com", recipientsMsg1[1].toString());
+
+        final Address[] recipientsMsg2 = message2.getRecipients(Message.RecipientType.TO);
+        assertEquals(2, recipientsMsg2.length);
     }
 
     @Test
@@ -144,11 +146,11 @@ public final class SendEmailsST {
         email.setMsg(".\n.");
         email.send();
 
-        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 1);
+        assertEquals(1, FolderHelper.listFiles(OUTPUT_PATH).size());
 
         final MimeMessage message = readAndRemoveMessageFile();
-        assertEquals(message.getSubject(), email.getSubject());
-        assertEquals(message.getContent().toString(), ".\r\n.\r\n");
+        assertEquals(email.getSubject(), message.getSubject());
+        assertEquals(".\r\n.\r\n", message.getContent().toString());
     }
 
     private Email simpleEmail() throws EmailException {
