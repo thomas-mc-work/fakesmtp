@@ -139,14 +139,15 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <!-- Remove the "-jar-with-dependencies" at the end of the file -->
-                    <appendAssemblyId>true</appendAssemblyId>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>
-                        <goals>
-                            <goal>attached</goal>
-                        </goals>
+                        <id>make-assembly</id>
                         <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
