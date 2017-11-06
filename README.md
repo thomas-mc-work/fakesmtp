@@ -118,6 +118,14 @@ You can replace the former existing GUI by this cli command:
 - Jar file size: 1.6 MB
 - Startup time: ~0.27 s
 
+## EML viewers
+
+You can use the following open tools to view the eml files:
+
+- Mozilla Thunderbird `heavyweight` (There is no need to create an account even though it's asking for it)
+- Gnome Evolution `heavyweight`
+- mpack `lightweight` `command line`
+
 ## Development
 
 First of all: **Contributions are welcome**!
