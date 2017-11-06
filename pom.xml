@@ -23,7 +23,7 @@
     </prerequisites>
 
     <scm>
-        <connection>git:https://github.com/thomas-mc-work/fakesmtp.git</connection>
+        <connection>scm:git:https://github.com/thomas-mc-work/fakesmtp.git</connection>
         <url>https://github.com/thomas-mc-work/fakesmtp</url>
     </scm>
 
