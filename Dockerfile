@@ -5,7 +5,7 @@ VOLUME /output
 
 EXPOSE 25
 
-COPY target/fakesmtp-*-jar-with-dependencies.jar /fakesmtp.jar
+COPY target/fakesmtp-*.jar /fakesmtp.jar
 
 # setting the bind address and port prevents accidential misconfigurations
 ENTRYPOINT ["java", "-jar", "/fakesmtp.jar", "-b", "0.0.0.0", "-p", "25"]
