@@ -11,13 +11,6 @@
     <description>Dummy SMTP server for testing</description>
     <url>https://github.com/thomas-mc-work/fakesmtp</url>
 
-    <licenses>
-        <license>
-            <name>BSD</name>
-            <url>LICENSE.txt</url>
-        </license>
-    </licenses>
-
     <prerequisites>
         <maven>3.2.1</maven>
     </prerequisites>
