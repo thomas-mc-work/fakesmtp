@@ -1,5 +1,11 @@
 # 📨 Fake-SMTP [![Build Status](https://travis-ci.org/thomas-mc-work/fakesmtp.svg?branch=master)](https://travis-ci.org/thomas-mc-work/fakesmtp) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=org.tmcw.fakesmtp%3Afakesmtp)](https://sonarcloud.io/dashboard?id=org.tmcw.fakesmtp%3Afakesmtp)
 
+This project aims to be a successor of the identically named project by [Gautier MECHLING aka Nilhem](https://github.com/Nilhcem): <https://github.com/Nilhcem/FakeSMTP>
+
+✌ Thank you very much for your effort and inspiration! ✌
+
+## Introduction
+
 FakeSMTP is a Free Fake SMTP Server ~~with GUI~~ for testing emails in applications easily.
 
 You can use it as a normal SMTP server in your applications. All emails will be intercepted and processed by this software.
@@ -9,12 +15,15 @@ source code is provided.
 
 ![Screenshot](src/site/resources/images/screenshot.png)
 
+## Download
+
+You can find [the latest and greates release in the github releases section](https://github.com/thomas-mc-work/fakesmtp/releases).
+
 ## Setup
 
 ### Native
 
-    curl -Lo /opt/fakesmtp.jar https://github.com/thomas-mc-work/fakesmtp/raw/master/fakesmtp-3.0.jar
-
+    curl -Lo /opt/fakesmtp.jar https://github.com/thomas-mc-work/fakesmtp/releases/download/fakesmtp-3.0/fakesmtp-3.0.jar
 You might want to define an alias somewhere (e.g. in `$HOME/.bashrc`) to shorten the execution line:
 
     alias fakesmtp='java -jar /opt/fakesmtp.jar'
@@ -175,13 +184,6 @@ testing emails in applications or websites. Listed below are some greats alterna
     - ➕ Lightweight
     - ➖ Closed source
     - ➕ Written in Java 1.4 (cross platform)
-
-## Origin
-
-This software is based on the the work by
-[Gautier MECHLING aka Nilhem](https://github.com/Nilhcem): <https://github.com/Nilhcem/FakeSMTP>
-
-✌ Thank you very much for your effort and inspiration! ✌
 
 ### Changes from FakeSMTP
 
