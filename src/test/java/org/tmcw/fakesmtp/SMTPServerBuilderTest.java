@@ -1,6 +1,5 @@
 package org.tmcw.fakesmtp;
 
-import org.tmcw.fakesmtp.spi.MailHandler;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -9,6 +8,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.subethamail.smtp.server.SMTPServer;
+import org.tmcw.fakesmtp.spi.MailHandler;
 
 public class SMTPServerBuilderTest {
 
@@ -23,8 +23,8 @@ public class SMTPServerBuilderTest {
 
         final SMTPServer result = instance.build(mailHandlerList, relayDomains, port, bindAddress);
 
-        assertEquals(result.getBindAddress(), bindAddress);
-        assertEquals(result.getPort(), port);
+        assertEquals(bindAddress, result.getBindAddress());
+        assertEquals(port, result.getPort());
     }
 
 }

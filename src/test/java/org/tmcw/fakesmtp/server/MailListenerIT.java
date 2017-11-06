@@ -1,7 +1,5 @@
 package org.tmcw.fakesmtp.server;
 
-import org.tmcw.fakesmtp.spi.MailHandler;
-import org.tmcw.fakesmtp.spi.MailHandlerException;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,6 +15,8 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.tmcw.fakesmtp.spi.MailHandler;
+import org.tmcw.fakesmtp.spi.MailHandlerException;
 
 public class MailListenerIT {
 
@@ -45,17 +45,17 @@ public class MailListenerIT {
             final SimpleMailHandler handler1, final String from, final String recipient, final String rawMessage)
             throws IOException, MessagingException {
 
-        assertEquals(handler1.from, from);
-        assertEquals(handler1.recipient, recipient);
-        assertEquals(handler1.rawMessage, rawMessage);
-        assertEquals(handler1.mimeMessage.getFrom().length, 1);
-        assertEquals(handler1.mimeMessage.getFrom()[0].toString(), "someone@example.com");
+        assertEquals(from, handler1.from);
+        assertEquals(recipient, handler1.recipient);
+        assertEquals(rawMessage, handler1.rawMessage);
+        assertEquals(1, handler1.mimeMessage.getFrom().length);
+        assertEquals("someone@example.com", handler1.mimeMessage.getFrom()[0].toString());
         final Address[] recipients = handler1.mimeMessage.getRecipients(Message.RecipientType.TO);
-        assertEquals(recipients.length, 1);
-        assertEquals(recipients[0].toString(), "yourfriend@gmail.com");
-        assertEquals(handler1.mimeMessage.getSubject(), "This is the subject");
-        assertEquals(handler1.mimeMessage.getContent().toString(), "This is the message body and contains the message\n");
-        assertEquals(handler1.mimeMessage.getMessageID(), "<20171102105403.dOb0cwKYw%someone@example.com>");
+        assertEquals(1, recipients.length);
+        assertEquals("yourfriend@gmail.com", recipients[0].toString());
+        assertEquals("This is the subject", handler1.mimeMessage.getSubject());
+        assertEquals("This is the message body and contains the message\n", handler1.mimeMessage.getContent().toString());
+        assertEquals("<20171102105403.dOb0cwKYw%someone@example.com>", handler1.mimeMessage.getMessageID());
     }
 
     class SimpleMailHandler implements MailHandler {

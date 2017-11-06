@@ -17,7 +17,7 @@ public class StreamToStringConverterTest {
 
         final String result = instance.convert(is);
 
-        assertEquals(result, input);
+        assertEquals(input, result);
     }
 
 }

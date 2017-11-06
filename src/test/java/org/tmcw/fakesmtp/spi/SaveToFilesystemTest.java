@@ -30,7 +30,7 @@ public class SaveToFilesystemTest {
         final SaveToFilesystem instance = new SaveToFilesystem(outputPath);
         instance.handle(from, recipient, rawMessage, mimeMessage);
 
-        assertEquals(FolderHelper.listFiles(outputPath).size(), 1);
+        assertEquals(1, FolderHelper.listFiles(outputPath).size());
 
         final Path firstFile = FolderHelper.listFiles(outputPath).get(0);
         final String fileName = firstFile.getFileName().toString();
@@ -40,7 +40,7 @@ public class SaveToFilesystemTest {
 
         assertTrue(fileName.startsWith(expectedPrefix));
         assertTrue(fileName.endsWith(SaveToFilesystem.FILE_EXTENSION));
-        assertEquals(Files.readAllLines(firstFile, StandardCharsets.UTF_8).get(0), rawMessage);
+        assertEquals(rawMessage, Files.readAllLines(firstFile, StandardCharsets.UTF_8).get(0));
     }
 
 }

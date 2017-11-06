@@ -12,15 +12,15 @@ public class SMTPAuthHandlerTest {
     public void testAuth() {
         final SMTPAuthHandler instance = new SMTPAuthHandler();
 
-        assertEquals(instance.auth("anything"), SMTPAuthHandler.PROMPT_USERNAME);
-        assertEquals(instance.auth("anything"), SMTPAuthHandler.PROMPT_PASSWORD);
+        assertEquals(SMTPAuthHandler.PROMPT_USERNAME, instance.auth("anything"));
+        assertEquals(SMTPAuthHandler.PROMPT_PASSWORD, instance.auth("anything"));
         assertNull(instance.auth("anything"));
     }
 
     @Test
     public void testGetIdentity() {
         final SMTPAuthHandler instance = new SMTPAuthHandler();
-        assertEquals(instance.getIdentity(), SMTPAuthHandler.USER_IDENTITY);
+        assertEquals(SMTPAuthHandler.USER_IDENTITY, instance.getIdentity());
     }
 
 }

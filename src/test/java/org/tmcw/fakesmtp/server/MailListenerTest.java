@@ -1,7 +1,5 @@
 package org.tmcw.fakesmtp.server;
 
-import org.tmcw.fakesmtp.spi.MailHandler;
-import org.tmcw.fakesmtp.spi.MailHandlerException;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -14,6 +12,8 @@ import org.mockito.ArgumentMatchers;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import org.tmcw.fakesmtp.spi.MailHandler;
+import org.tmcw.fakesmtp.spi.MailHandlerException;
 
 public class MailListenerTest {
 
@@ -26,7 +26,7 @@ public class MailListenerTest {
 
         boolean expResult = true;
         boolean result = instance.accept(from, recipient);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class MailListenerTest {
 
         boolean expResult = true;
         boolean result = instance.accept(from, recipient);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class MailListenerTest {
 
         boolean expResult = false;
         boolean result = instance.accept(from, recipient);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
     }
 
     @Test
