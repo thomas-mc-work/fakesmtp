@@ -1,4 +1,4 @@
-# 📨 Fake-SMTP [![Build Status](https://travis-ci.org/thomas-mc-work/fakesmtp.svg?branch=master)](https://travis-ci.org/thomas-mc-work/fakesmtp)
+# 📨 Fake-SMTP [![Build Status](https://travis-ci.org/thomas-mc-work/fakesmtp.svg?branch=master)](https://travis-ci.org/thomas-mc-work/fakesmtp) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=org.tmcw.fakesmtp%3Afakesmtp)](https://sonarcloud.io/dashboard?id=org.tmcw.fakesmtp%3Afakesmtp)
 
 FakeSMTP is a Free Fake SMTP Server ~~with GUI~~ for testing emails in applications easily.
 
