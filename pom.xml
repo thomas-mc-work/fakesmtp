@@ -18,16 +18,21 @@
         </license>
     </licenses>
 
+    <prerequisites>
+        <maven>3.2.1</maven>
+    </prerequisites>
+
+    <scm>
+        <connection>git:https://github.com/thomas-mc-work/fakesmtp.git</connection>
+        <url>https://github.com/thomas-mc-work/fakesmtp</url>
+    </scm>
+
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-    <prerequisites>
-        <maven>3.2.1</maven>
-    </prerequisites>
 
     <dependencies>
         <!-- SubEtha SMTP: easy-to-use server-side SMTP library for Java -->
