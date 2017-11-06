@@ -124,7 +124,7 @@ public final class SendEmailsST {
         email.addHeader("Foo2", "Bar2");
         email.send();
 
-        assertEquals(FolderHelper.listFiles(OUTPUT_PATH).size(), 2);
+        assertEquals(2, FolderHelper.listFiles(OUTPUT_PATH).size());
 
         final MimeMessage message1 = readAndRemoveMessageFile();
         final MimeMessage message2 = readAndRemoveMessageFile();
