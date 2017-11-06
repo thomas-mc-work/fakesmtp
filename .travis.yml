@@ -32,7 +32,7 @@ jobs:
     - stage: quality analysis
       script: 
         - jdk_switcher use openjdk8
-        - mvn org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar
+        - mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=false sonar:sonar
     - stage: system test
       script: ./run-st.sh
 
