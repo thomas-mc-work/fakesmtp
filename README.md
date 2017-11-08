@@ -1,19 +1,16 @@
 # 📨 Fake-SMTP [![Build Status](https://travis-ci.org/thomas-mc-work/fakesmtp.svg?branch=master)](https://travis-ci.org/thomas-mc-work/fakesmtp) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=org.tmcw.fakesmtp%3Afakesmtp)](https://sonarcloud.io/dashboard?id=org.tmcw.fakesmtp%3Afakesmtp)
 
-This project aims to be a successor of the identically named project by [Gautier MECHLING aka Nilhem](https://github.com/Nilhcem): <https://github.com/Nilhcem/FakeSMTP>
-
-✌ Thank you very much for your effort and inspiration! ✌
-
-## Introduction
-
-FakeSMTP is a Free Fake SMTP Server ~~with GUI~~ for testing emails in applications easily.
+FakeSMTP is a Free Fake SMTP Server for testing emails in applications easily.
 
 You can use it as a normal SMTP server in your applications. All emails will be intercepted and processed by this software.
 
-FakeSMTP is free to use for commercial and non-commercial projects and the
-source code is provided.
-
 ![Screenshot](src/site/resources/images/screenshot.png)
+
+### Origin
+
+This project aims to be a successor of the identically named project by [Gautier MECHLING aka Nilhem](https://github.com/Nilhcem): <https://github.com/Nilhcem/FakeSMTP>
+
+✌ Thank you very much for your effort and inspiration! ✌
 
 ## Download
 
@@ -23,7 +20,14 @@ You can find [the latest and greates release in the github releases section](htt
 
 ### Native
 
+#### Requirements
+
+- Java SE JRE 7 (headless will suffice a sthere is no GUI)
+
+#### Installation
+
     curl -Lo /opt/fakesmtp.jar https://github.com/thomas-mc-work/fakesmtp/releases/download/fakesmtp-3.0/fakesmtp-3.0.jar
+
 You might want to define an alias somewhere (e.g. in `$HOME/.bashrc`) to shorten the execution line:
 
     alias fakesmtp='java -jar /opt/fakesmtp.jar'
