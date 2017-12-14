@@ -22,7 +22,7 @@ You can find [the latest and greates release in the github releases section](htt
 
 #### Requirements
 
-- Java SE JRE 7 (headless will suffice a sthere is no GUI)
+- Java SE JRE 7 (headless will suffice as there is no GUI)
 
 #### Installation
 
