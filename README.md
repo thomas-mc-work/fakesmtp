@@ -174,6 +174,10 @@ From the former FakeSMTP author:
 > FakeSMTP was created because we couldn't find any free (as in freedom) and cross-platform SMTP server with GUI for
 testing emails in applications or websites. Listed below are some greats alternatives to Fake SMTP:
 
+- [GreenMail](http://www.icegreen.com/greenmail/)
+    - ± has a nice GUI
+    - ➕ written in Java
+    - ➕ Open source
 - [FakeSMTP legacy](http://nilhcem.com/FakeSMTP/)
     - ± has a nice GUI
     - ➕ written in Java
